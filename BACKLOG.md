@@ -6,6 +6,8 @@
 
 ## Done
 
+- introduce rotate function
+- get rid of primitive obsession
 - simplify actions
 - create actions using factory
 - extract logic into action class

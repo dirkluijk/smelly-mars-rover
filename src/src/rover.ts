@@ -14,11 +14,13 @@ export class Rover {
     M: new MoveForwardAction(),
   };
 
+  private readonly state: RoverState = new RoverState();
+
   constructor(position: string = "") {
     const [x, y, direction] = position.split(" ");
     if (x !== undefined && y !== undefined && direction !== undefined) {
-      this.state.x = parseInt(x, 10);
-      this.state.y = parseInt(y, 10);
+      this.state.position.x = parseInt(x, 10);
+      this.state.position.y = parseInt(y, 10);
       this.state.direction = direction[0]! as Direction;
     }
   }
@@ -27,7 +29,7 @@ export class Rover {
     for (const command of commands) {
       const action = this.actions[command];
       if (action !== undefined) {
-        this.state = action.execute(this.state);
+        action.execute(this.state);
       }
     }
   }
@@ -37,12 +39,10 @@ export class Rover {
   }
 
   public get XYD(): string {
-    return `${this.state.x} ${this.state.y} ${this.state.direction}`;
+    return `${this.state.position.x} ${this.state.position.y} ${this.state.direction}`;
   }
 
   public pos(): string {
     return this.XYD;
   }
-
-  private state: RoverState = new RoverState();
 }

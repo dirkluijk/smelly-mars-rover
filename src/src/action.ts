@@ -1,51 +1,43 @@
 import { RoverState } from "./rover-state";
-import { Direction } from "./direction";
+import { Direction, Directions } from "./direction";
 
 export interface Action {
-  execute(currentState: RoverState): RoverState;
+  execute(currentState: RoverState): void;
 }
 
 export class MoveForwardAction implements Action {
-  execute(currentState: RoverState): RoverState {
+  execute(currentState: RoverState): void {
     switch (currentState.direction) {
       case Direction.NORTH:
-        return { ...currentState, y: currentState.y + 1 };
+        currentState.position.y++;
+        return;
       case Direction.EAST:
-        return { ...currentState, x: currentState.x + 1 };
+        currentState.position.x++;
+        return;
       case Direction.SOUTH:
-        return { ...currentState, y: currentState.y - 1 };
+        currentState.position.y--;
+        return;
       case Direction.WEST:
-        return { ...currentState, x: currentState.x - 1 };
+        currentState.position.x--;
+        return;
     }
   }
 }
 
 export class TurnLeftAction implements Action {
-  execute(currentState: RoverState): RoverState {
-    switch (currentState.direction) {
-      case Direction.NORTH:
-        return { ...currentState, direction: Direction.WEST };
-      case Direction.EAST:
-        return { ...currentState, direction: Direction.NORTH };
-      case Direction.SOUTH:
-        return { ...currentState, direction: Direction.EAST };
-      case Direction.WEST:
-        return { ...currentState, direction: Direction.SOUTH };
-    }
+  execute(currentState: RoverState): void {
+    currentState.direction = rotate(currentState.direction, -1);
   }
 }
 
 export class TurnRightAction implements Action {
-  execute(currentState: RoverState): RoverState {
-    switch (currentState.direction) {
-      case Direction.NORTH:
-        return { ...currentState, direction: Direction.EAST };
-      case Direction.EAST:
-        return { ...currentState, direction: Direction.SOUTH };
-      case Direction.SOUTH:
-        return { ...currentState, direction: Direction.WEST };
-      case Direction.WEST:
-        return { ...currentState, direction: Direction.NORTH };
-    }
+  execute(currentState: RoverState): void {
+    currentState.direction = rotate(currentState.direction, 1);
   }
+}
+
+function rotate(direction: Direction, amount: number): Direction {
+  const index = Directions.indexOf(direction);
+
+  return Directions.at((index + amount) % Directions.length)!;
 }
