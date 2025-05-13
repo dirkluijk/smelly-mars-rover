@@ -1,5 +1,5 @@
 import { RoverState } from "./rover-state";
-import { Direction } from "./direction";
+import { Direction, Directions } from "./direction";
 
 export interface Action {
   execute(currentState: RoverState): void;
@@ -26,38 +26,18 @@ export class MoveForwardAction implements Action {
 
 export class TurnLeftAction implements Action {
   execute(currentState: RoverState): void {
-    switch (currentState.direction) {
-      case Direction.NORTH:
-        currentState.direction = Direction.WEST;
-        return;
-      case Direction.EAST:
-        currentState.direction = Direction.NORTH;
-        return;
-      case Direction.SOUTH:
-        currentState.direction = Direction.EAST;
-        return;
-      case Direction.WEST:
-        currentState.direction = Direction.SOUTH;
-        return;
-    }
+    currentState.direction = rotate(currentState.direction, -1);
   }
 }
 
 export class TurnRightAction implements Action {
   execute(currentState: RoverState): void {
-    switch (currentState.direction) {
-      case Direction.NORTH:
-        currentState.direction = Direction.EAST;
-        return;
-      case Direction.EAST:
-        currentState.direction = Direction.SOUTH;
-        return;
-      case Direction.SOUTH:
-        currentState.direction = Direction.WEST;
-        return;
-      case Direction.WEST:
-        currentState.direction = Direction.NORTH;
-        return;
-    }
+    currentState.direction = rotate(currentState.direction, 1);
   }
+}
+
+function rotate(direction: Direction, amount: number): Direction {
+  const index = Directions.indexOf(direction);
+
+  return Directions.at((index + amount) % Directions.length)!;
 }

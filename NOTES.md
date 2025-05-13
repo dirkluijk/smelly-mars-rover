@@ -18,3 +18,4 @@
 ## Pomodoro 3
 
 - get rid of primitive obsession (introduce `Position`)
+- introduce rotate function

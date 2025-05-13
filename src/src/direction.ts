@@ -4,3 +4,10 @@ export enum Direction {
   SOUTH = "S",
   WEST = "W",
 }
+
+export const Directions = [
+  Direction.NORTH,
+  Direction.EAST,
+  Direction.SOUTH,
+  Direction.WEST,
+];
