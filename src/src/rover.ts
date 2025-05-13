@@ -17,15 +17,7 @@ export class Rover {
       if (command === "L") {
         this.turnLeft();
       } else if (command === "R") {
-        if (this.state.direction === Direction.EAST) {
-          this.state.direction = Direction.SOUTH;
-        } else if (this.state.direction === Direction.SOUTH) {
-          this.state.direction = Direction.WEST;
-        } else if (this.state.direction === Direction.WEST) {
-          this.state.direction = Direction.NORTH;
-        } else if (this.state.direction === Direction.NORTH) {
-          this.state.direction = Direction.EAST;
-        }
+        this.turnRight();
       } else if (command === "M") {
         if (this.state.direction === Direction.EAST) {
           this.state.x++;
@@ -40,6 +32,18 @@ export class Rover {
           this.state.y++;
         }
       }
+    }
+  }
+
+  private turnRight() {
+    if (this.state.direction === Direction.EAST) {
+      this.state.direction = Direction.SOUTH;
+    } else if (this.state.direction === Direction.SOUTH) {
+      this.state.direction = Direction.WEST;
+    } else if (this.state.direction === Direction.WEST) {
+      this.state.direction = Direction.NORTH;
+    } else if (this.state.direction === Direction.NORTH) {
+      this.state.direction = Direction.EAST;
     }
   }
 
