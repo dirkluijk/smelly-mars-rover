@@ -20,25 +20,13 @@ export class Rover {
     for (let i = 0; i < commands.length; i++) {
       const command = commands[i];
       if (command === "L") {
-        this.turnLeft();
+        this.state = new TurnLeftCommand().execute(this.state);
       } else if (command === "R") {
-        this.turnRight();
+        this.state = new TurnRightCommand().execute(this.state);
       } else if (command === "M") {
-        this.moveForward();
+        this.state = new MoveForwardCommand().execute(this.state);
       }
     }
-  }
-
-  private moveForward() {
-    this.state = new MoveForwardCommand().execute(this.state);
-  }
-
-  private turnRight() {
-    this.state = new TurnRightCommand().execute(this.state);
-  }
-
-  private turnLeft() {
-    this.state = new TurnLeftCommand().execute(this.state);
   }
 
   public G(z: string): void {
