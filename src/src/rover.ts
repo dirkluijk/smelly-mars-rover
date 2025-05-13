@@ -1,4 +1,5 @@
 import { RoverState } from "./rover-state";
+import { Direction } from "./direction";
 
 export class Rover {
   constructor(p: string = "") {
@@ -6,7 +7,7 @@ export class Rover {
     if (s.length >= 3) {
       this.rs.xx = parseInt(s[0]!, 10);
       this.rs.yy = parseInt(s[1]!, 10);
-      this.rs.dd = s[2]![0]!;
+      this.rs.dd = s[2]![0]! as Direction;
     }
   }
 
@@ -14,36 +15,36 @@ export class Rover {
     for (let i = 0; i < cms.length; i++) {
       const c = cms[i];
       if (c === "L") {
-        if (this.rs.dd === "E") {
-          this.rs.dd = "N";
-        } else if (this.rs.dd === "N") {
-          this.rs.dd = "W";
-        } else if (this.rs.dd === "W") {
-          this.rs.dd = "S";
-        } else if (this.rs.dd === "S") {
-          this.rs.dd = "E";
+        if (this.rs.dd === Direction.EAST) {
+          this.rs.dd = Direction.NORTH;
+        } else if (this.rs.dd === Direction.NORTH) {
+          this.rs.dd = Direction.WEST;
+        } else if (this.rs.dd === Direction.WEST) {
+          this.rs.dd = Direction.SOUTH;
+        } else if (this.rs.dd === Direction.SOUTH) {
+          this.rs.dd = Direction.EAST;
         }
       } else if (c === "R") {
-        if (this.rs.dd === "E") {
-          this.rs.dd = "S";
-        } else if (this.rs.dd === "S") {
-          this.rs.dd = "W";
-        } else if (this.rs.dd === "W") {
-          this.rs.dd = "N";
-        } else if (this.rs.dd === "N") {
-          this.rs.dd = "E";
+        if (this.rs.dd === Direction.EAST) {
+          this.rs.dd = Direction.SOUTH;
+        } else if (this.rs.dd === Direction.SOUTH) {
+          this.rs.dd = Direction.WEST;
+        } else if (this.rs.dd === Direction.WEST) {
+          this.rs.dd = Direction.NORTH;
+        } else if (this.rs.dd === Direction.NORTH) {
+          this.rs.dd = Direction.EAST;
         }
       } else if (c === "M") {
-        if (this.rs.dd === "E") {
+        if (this.rs.dd === Direction.EAST) {
           this.rs.xx++;
         }
-        if (this.rs.dd === "S") {
+        if (this.rs.dd === Direction.SOUTH) {
           this.rs.yy--;
         }
-        if (this.rs.dd === "W") {
+        if (this.rs.dd === Direction.WEST) {
           this.rs.xx--;
         }
-        if (this.rs.dd === "N") {
+        if (this.rs.dd === Direction.NORTH) {
           this.rs.yy++;
         }
       }
