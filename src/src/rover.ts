@@ -1,6 +1,6 @@
 import { RoverState } from "./rover-state";
 import { Direction } from "./direction";
-import { MoveForwardCommand } from "./command";
+import { MoveForwardCommand, TurnLeftCommand } from "./command";
 
 export class Rover {
   constructor(position: string = "") {
@@ -47,20 +47,7 @@ export class Rover {
   }
 
   private turnLeft() {
-    switch (this.state.direction) {
-      case Direction.EAST:
-        this.state.direction = Direction.NORTH;
-        break;
-      case Direction.NORTH:
-        this.state.direction = Direction.WEST;
-        break;
-      case Direction.WEST:
-        this.state.direction = Direction.SOUTH;
-        break;
-      case Direction.SOUTH:
-        this.state.direction = Direction.EAST;
-        break;
-    }
+    this.state = new TurnLeftCommand().execute(this.state);
   }
 
   public G(z: string): void {
