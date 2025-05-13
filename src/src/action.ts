@@ -2,50 +2,62 @@ import { RoverState } from "./rover-state";
 import { Direction } from "./direction";
 
 export interface Action {
-  execute(currentState: RoverState): RoverState;
+  execute(currentState: RoverState): void;
 }
 
 export class MoveForwardAction implements Action {
-  execute(currentState: RoverState): RoverState {
+  execute(currentState: RoverState): void {
     switch (currentState.direction) {
       case Direction.NORTH:
-        return { ...currentState, y: currentState.y + 1 };
+        currentState.position.y++;
+        return;
       case Direction.EAST:
-        return { ...currentState, x: currentState.x + 1 };
+        currentState.position.x++;
+        return;
       case Direction.SOUTH:
-        return { ...currentState, y: currentState.y - 1 };
+        currentState.position.y--;
+        return;
       case Direction.WEST:
-        return { ...currentState, x: currentState.x - 1 };
+        currentState.position.x--;
+        return;
     }
   }
 }
 
 export class TurnLeftAction implements Action {
-  execute(currentState: RoverState): RoverState {
+  execute(currentState: RoverState): void {
     switch (currentState.direction) {
       case Direction.NORTH:
-        return { ...currentState, direction: Direction.WEST };
+        currentState.direction = Direction.WEST;
+        return;
       case Direction.EAST:
-        return { ...currentState, direction: Direction.NORTH };
+        currentState.direction = Direction.NORTH;
+        return;
       case Direction.SOUTH:
-        return { ...currentState, direction: Direction.EAST };
+        currentState.direction = Direction.EAST;
+        return;
       case Direction.WEST:
-        return { ...currentState, direction: Direction.SOUTH };
+        currentState.direction = Direction.SOUTH;
+        return;
     }
   }
 }
 
 export class TurnRightAction implements Action {
-  execute(currentState: RoverState): RoverState {
+  execute(currentState: RoverState): void {
     switch (currentState.direction) {
       case Direction.NORTH:
-        return { ...currentState, direction: Direction.EAST };
+        currentState.direction = Direction.EAST;
+        return;
       case Direction.EAST:
-        return { ...currentState, direction: Direction.SOUTH };
+        currentState.direction = Direction.SOUTH;
+        return;
       case Direction.SOUTH:
-        return { ...currentState, direction: Direction.WEST };
+        currentState.direction = Direction.WEST;
+        return;
       case Direction.WEST:
-        return { ...currentState, direction: Direction.NORTH };
+        currentState.direction = Direction.NORTH;
+        return;
     }
   }
 }

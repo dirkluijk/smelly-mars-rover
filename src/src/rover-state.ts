@@ -1,7 +1,7 @@
 import { Direction } from "./direction";
+import type { Position } from "./position";
 
 export class RoverState {
-  x: number = 0;
-  y: number = 0;
+  position: Position = { x: 0, y: 0 };
   direction: Direction = Direction.NORTH;
 }
