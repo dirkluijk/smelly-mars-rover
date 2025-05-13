@@ -2,12 +2,14 @@
 
 ## To do
 
-## In progress
+- extract logic into command class
+- create commands using factory
 
-- introduce switch cases
+## In progress
 
 ## Done
 
+- introduce switch cases
 - scan code and improve naming
 - introduce Direction enum
 - use correct file naming convention
