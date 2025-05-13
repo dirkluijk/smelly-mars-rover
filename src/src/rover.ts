@@ -1,9 +1,18 @@
 import { RoverState } from "./rover-state";
 import { Direction } from "./direction";
-import { ActionFactory } from "./action-factory";
+import {
+  type Action,
+  MoveForwardAction,
+  TurnLeftAction,
+  TurnRightAction,
+} from "./action";
 
 export class Rover {
-  private readonly actionFactory = new ActionFactory();
+  private readonly actions: Record<string, Action> = {
+    L: new TurnLeftAction(),
+    R: new TurnRightAction(),
+    M: new MoveForwardAction(),
+  };
 
   constructor(position: string = "") {
     const [x, y, direction] = position.split(" ");
@@ -16,8 +25,10 @@ export class Rover {
 
   public go(commands: string): void {
     for (const command of commands) {
-      const action = this.actionFactory.createAction(command);
-      this.state = action.execute(this.state);
+      const action = this.actions[command];
+      if (action !== undefined) {
+        this.state = action.execute(this.state);
+      }
     }
   }
 
