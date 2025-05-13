@@ -11,10 +11,10 @@ export class Rover {
     }
   }
 
-  public go(cms: string): void {
-    for (let i = 0; i < cms.length; i++) {
-      const c = cms[i];
-      if (c === "L") {
+  public go(commands: string): void {
+    for (let i = 0; i < commands.length; i++) {
+      const command = commands[i];
+      if (command === "L") {
         if (this.state.direction === Direction.EAST) {
           this.state.direction = Direction.NORTH;
         } else if (this.state.direction === Direction.NORTH) {
@@ -24,7 +24,7 @@ export class Rover {
         } else if (this.state.direction === Direction.SOUTH) {
           this.state.direction = Direction.EAST;
         }
-      } else if (c === "R") {
+      } else if (command === "R") {
         if (this.state.direction === Direction.EAST) {
           this.state.direction = Direction.SOUTH;
         } else if (this.state.direction === Direction.SOUTH) {
@@ -34,7 +34,7 @@ export class Rover {
         } else if (this.state.direction === Direction.NORTH) {
           this.state.direction = Direction.EAST;
         }
-      } else if (c === "M") {
+      } else if (command === "M") {
         if (this.state.direction === Direction.EAST) {
           this.state.x++;
         }
