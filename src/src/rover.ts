@@ -27,14 +27,11 @@ export class Rover {
   private moveForward() {
     if (this.state.direction === Direction.EAST) {
       this.state.x++;
-    }
-    if (this.state.direction === Direction.SOUTH) {
+    } else if (this.state.direction === Direction.SOUTH) {
       this.state.y--;
-    }
-    if (this.state.direction === Direction.WEST) {
+    } else if (this.state.direction === Direction.WEST) {
       this.state.x--;
-    }
-    if (this.state.direction === Direction.NORTH) {
+    } else if (this.state.direction === Direction.NORTH) {
       this.state.y++;
     }
   }
