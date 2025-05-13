@@ -2,11 +2,10 @@
 
 ## To do
 
-- scan code and improve naming
 
 ## In progress
 
-n/a
+- scan code and improve naming
 
 ## Done
 

@@ -2,8 +2,8 @@ import { RoverState } from "./rover-state";
 import { Direction } from "./direction";
 
 export class Rover {
-  constructor(p: string = "") {
-    const s = p.split(" ");
+  constructor(position: string = "") {
+    const s = position.split(" ");
     if (s.length >= 3) {
       this.rs.xx = parseInt(s[0]!, 10);
       this.rs.yy = parseInt(s[1]!, 10);
