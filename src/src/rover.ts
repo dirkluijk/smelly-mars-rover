@@ -15,13 +15,20 @@ export class Rover {
   public go(commands: string): void {
     for (let i = 0; i < commands.length; i++) {
       const command = commands[i];
-      if (command === "L") {
-        this.state = new TurnLeftAction().execute(this.state);
-      } else if (command === "R") {
-        this.state = new TurnRightAction().execute(this.state);
-      } else if (command === "M") {
-        this.state = new MoveForwardAction().execute(this.state);
-      }
+      const action = this.createAction(command);
+      this.state = action.execute(this.state);
+    }
+  }
+
+  createAction(command: string | undefined) {
+    if (command === "L") {
+      return new TurnLeftAction();
+    } else if (command === "R") {
+      return new TurnRightAction();
+    } else if (command === "M") {
+      return new MoveForwardAction();
+    } else {
+      throw new Error("Unknown command");
     }
   }
 
