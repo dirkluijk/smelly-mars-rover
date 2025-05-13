@@ -8,3 +8,6 @@
 - scan code and improve naming
 - extract logic into methods
 - introduce switch cases
+
+## Pomodoro 2
+
