@@ -6,11 +6,11 @@ export class Rover {
   private readonly actionFactory = new ActionFactory();
 
   constructor(position: string = "") {
-    const s = position.split(" ");
-    if (s.length >= 3) {
-      this.state.x = parseInt(s[0]!, 10);
-      this.state.y = parseInt(s[1]!, 10);
-      this.state.direction = s[2]![0]! as Direction;
+    const [x, y, direction] = position.split(" ");
+    if (x !== undefined && y !== undefined && direction !== undefined) {
+      this.state.x = parseInt(x, 10);
+      this.state.y = parseInt(y, 10);
+      this.state.direction = direction[0]! as Direction;
     }
   }
 
