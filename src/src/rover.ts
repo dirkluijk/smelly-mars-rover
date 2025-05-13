@@ -1,10 +1,6 @@
 import { RoverState } from "./rover-state";
 import { Direction } from "./direction";
-import {
-  MoveForwardCommand,
-  TurnLeftCommand,
-  TurnRightCommand,
-} from "./command";
+import { MoveForwardAction, TurnLeftAction, TurnRightAction } from "./action";
 
 export class Rover {
   constructor(position: string = "") {
@@ -20,11 +16,11 @@ export class Rover {
     for (let i = 0; i < commands.length; i++) {
       const command = commands[i];
       if (command === "L") {
-        this.state = new TurnLeftCommand().execute(this.state);
+        this.state = new TurnLeftAction().execute(this.state);
       } else if (command === "R") {
-        this.state = new TurnRightCommand().execute(this.state);
+        this.state = new TurnRightAction().execute(this.state);
       } else if (command === "M") {
-        this.state = new MoveForwardCommand().execute(this.state);
+        this.state = new MoveForwardAction().execute(this.state);
       }
     }
   }

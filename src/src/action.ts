@@ -1,11 +1,11 @@
 import { RoverState } from "./rover-state";
 import { Direction } from "./direction";
 
-export interface Command {
+export interface Action {
   execute(currentState: RoverState): RoverState;
 }
 
-export class MoveForwardCommand implements Command {
+export class MoveForwardAction implements Action {
   execute(currentState: RoverState): RoverState {
     switch (currentState.direction) {
       case Direction.NORTH:
@@ -20,7 +20,7 @@ export class MoveForwardCommand implements Command {
   }
 }
 
-export class TurnLeftCommand implements Command {
+export class TurnLeftAction implements Action {
   execute(currentState: RoverState): RoverState {
     switch (currentState.direction) {
       case Direction.NORTH:
@@ -35,7 +35,7 @@ export class TurnLeftCommand implements Command {
   }
 }
 
-export class TurnRightCommand implements Command {
+export class TurnRightAction implements Action {
   execute(currentState: RoverState): RoverState {
     switch (currentState.direction) {
       case Direction.NORTH:
