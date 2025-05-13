@@ -8,3 +8,9 @@
 - scan code and improve naming
 - extract logic into methods
 - introduce switch cases
+
+## Pomodoro 2
+
+- extract logic into action class
+- create actions using factory
+- simplify actions

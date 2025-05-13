@@ -1,77 +1,34 @@
 import { RoverState } from "./rover-state";
 import { Direction } from "./direction";
+import {
+  type Action,
+  MoveForwardAction,
+  TurnLeftAction,
+  TurnRightAction,
+} from "./action";
 
 export class Rover {
+  private readonly actions: Record<string, Action> = {
+    L: new TurnLeftAction(),
+    R: new TurnRightAction(),
+    M: new MoveForwardAction(),
+  };
+
   constructor(position: string = "") {
-    const s = position.split(" ");
-    if (s.length >= 3) {
-      this.state.x = parseInt(s[0]!, 10);
-      this.state.y = parseInt(s[1]!, 10);
-      this.state.direction = s[2]![0]! as Direction;
+    const [x, y, direction] = position.split(" ");
+    if (x !== undefined && y !== undefined && direction !== undefined) {
+      this.state.x = parseInt(x, 10);
+      this.state.y = parseInt(y, 10);
+      this.state.direction = direction[0]! as Direction;
     }
   }
 
   public go(commands: string): void {
-    for (let i = 0; i < commands.length; i++) {
-      const command = commands[i];
-      if (command === "L") {
-        this.turnLeft();
-      } else if (command === "R") {
-        this.turnRight();
-      } else if (command === "M") {
-        this.moveForward();
+    for (const command of commands) {
+      const action = this.actions[command];
+      if (action !== undefined) {
+        this.state = action.execute(this.state);
       }
-    }
-  }
-
-  private moveForward() {
-    switch (this.state.direction) {
-      case Direction.EAST:
-        this.state.x++;
-        break;
-      case Direction.SOUTH:
-        this.state.y--;
-        break;
-      case Direction.WEST:
-        this.state.x--;
-        break;
-      case Direction.NORTH:
-        this.state.y++;
-        break;
-    }
-  }
-
-  private turnRight() {
-    switch (this.state.direction) {
-      case Direction.EAST:
-        this.state.direction = Direction.SOUTH;
-        break;
-      case Direction.SOUTH:
-        this.state.direction = Direction.WEST;
-        break;
-      case Direction.WEST:
-        this.state.direction = Direction.NORTH;
-        break;
-      case Direction.NORTH:
-        this.state.direction = Direction.EAST;
-        break;
-    }
-  }
-
-  private turnLeft() {
-    switch (this.state.direction) {
-      case Direction.EAST:
-        this.state.direction = Direction.NORTH;
-        break;
-      case Direction.NORTH:
-        this.state.direction = Direction.WEST;
-        break;
-      case Direction.WEST:
-        this.state.direction = Direction.SOUTH;
-        break;
-      case Direction.SOUTH:
-        this.state.direction = Direction.EAST;
-        break;
     }
   }
 
