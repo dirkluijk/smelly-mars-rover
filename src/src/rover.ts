@@ -15,15 +15,7 @@ export class Rover {
     for (let i = 0; i < commands.length; i++) {
       const command = commands[i];
       if (command === "L") {
-        if (this.state.direction === Direction.EAST) {
-          this.state.direction = Direction.NORTH;
-        } else if (this.state.direction === Direction.NORTH) {
-          this.state.direction = Direction.WEST;
-        } else if (this.state.direction === Direction.WEST) {
-          this.state.direction = Direction.SOUTH;
-        } else if (this.state.direction === Direction.SOUTH) {
-          this.state.direction = Direction.EAST;
-        }
+        this.turnLeft();
       } else if (command === "R") {
         if (this.state.direction === Direction.EAST) {
           this.state.direction = Direction.SOUTH;
@@ -48,6 +40,18 @@ export class Rover {
           this.state.y++;
         }
       }
+    }
+  }
+
+  private turnLeft() {
+    if (this.state.direction === Direction.EAST) {
+      this.state.direction = Direction.NORTH;
+    } else if (this.state.direction === Direction.NORTH) {
+      this.state.direction = Direction.WEST;
+    } else if (this.state.direction === Direction.WEST) {
+      this.state.direction = Direction.SOUTH;
+    } else if (this.state.direction === Direction.SOUTH) {
+      this.state.direction = Direction.EAST;
     }
   }
 

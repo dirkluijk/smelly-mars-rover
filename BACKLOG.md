@@ -4,9 +4,10 @@
 
 ## In progress
 
-- scan code and improve naming
+- extract logic into methods
 
 ## Done
 
+- scan code and improve naming
 - introduce Direction enum
 - use correct file naming convention
