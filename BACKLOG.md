@@ -4,11 +4,12 @@
 
 ## In progress
 
-- create commands using factory
 
 ## Done
 
-- extract logic into command class
+- simplify actions
+- create actions using factory
+- extract logic into action class
 - introduce switch cases
 - scan code and improve naming
 - introduce Direction enum
