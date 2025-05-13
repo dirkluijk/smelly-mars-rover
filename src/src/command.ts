@@ -34,3 +34,18 @@ export class TurnLeftCommand implements Command {
     }
   }
 }
+
+export class TurnRightCommand implements Command {
+  execute(currentState: RoverState): RoverState {
+    switch (currentState.direction) {
+      case Direction.EAST:
+        return { ...currentState, direction: Direction.SOUTH };
+      case Direction.SOUTH:
+        return { ...currentState, direction: Direction.WEST };
+      case Direction.WEST:
+        return { ...currentState, direction: Direction.NORTH };
+      case Direction.NORTH:
+        return { ...currentState, direction: Direction.EAST };
+    }
+  }
+}
