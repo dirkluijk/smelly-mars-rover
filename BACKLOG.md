@@ -2,10 +2,9 @@
 
 ## To do
 
-- introduce switch cases
-
 ## In progress
 
+- introduce switch cases
 
 ## Done
 

@@ -25,14 +25,15 @@ export class Rover {
   }
 
   private moveForward() {
-    if (this.state.direction === Direction.EAST) {
-      this.state.x++;
-    } else if (this.state.direction === Direction.SOUTH) {
-      this.state.y--;
-    } else if (this.state.direction === Direction.WEST) {
-      this.state.x--;
-    } else if (this.state.direction === Direction.NORTH) {
-      this.state.y++;
+    switch (this.state.direction) {
+      case Direction.EAST:
+        return this.state.x++;
+      case Direction.SOUTH:
+        return this.state.y--;
+      case Direction.WEST:
+        return this.state.x--;
+      case Direction.NORTH:
+        return this.state.y++;
     }
   }
 
