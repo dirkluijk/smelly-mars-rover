@@ -15,8 +15,7 @@ export class Rover {
   }
 
   public go(commands: string): void {
-    for (let i = 0; i < commands.length; i++) {
-      const command = commands[i]!;
+    for (const command of commands) {
       const action = this.actionFactory.createAction(command);
       this.state = action.execute(this.state);
     }
