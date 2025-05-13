@@ -19,19 +19,23 @@ export class Rover {
       } else if (command === "R") {
         this.turnRight();
       } else if (command === "M") {
-        if (this.state.direction === Direction.EAST) {
-          this.state.x++;
-        }
-        if (this.state.direction === Direction.SOUTH) {
-          this.state.y--;
-        }
-        if (this.state.direction === Direction.WEST) {
-          this.state.x--;
-        }
-        if (this.state.direction === Direction.NORTH) {
-          this.state.y++;
-        }
+        this.moveForward();
       }
+    }
+  }
+
+  private moveForward() {
+    if (this.state.direction === Direction.EAST) {
+      this.state.x++;
+    }
+    if (this.state.direction === Direction.SOUTH) {
+      this.state.y--;
+    }
+    if (this.state.direction === Direction.WEST) {
+      this.state.x--;
+    }
+    if (this.state.direction === Direction.NORTH) {
+      this.state.y++;
     }
   }
 
