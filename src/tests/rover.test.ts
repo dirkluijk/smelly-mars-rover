@@ -1,8 +1,8 @@
-import { Rover } from "../src/rover";
+import { type PositionString, Rover } from "../src/rover";
 import { describe, expect, test } from "vitest";
 
 describe("MarsRoverShould", () => {
-  test.each([
+  test.each<[PositionString, string, PositionString]>([
     ["1 2 N", "", "1 2 N"],
     ["1 2 N", "L", "1 2 W"],
     ["1 2 W", "L", "1 2 S"],

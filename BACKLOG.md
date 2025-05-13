@@ -6,6 +6,7 @@
 
 ## Done
 
+- extracted state parsing
 - introduce rotate function
 - get rid of primitive obsession
 - simplify actions

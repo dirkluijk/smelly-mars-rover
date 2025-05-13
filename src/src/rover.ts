@@ -1,4 +1,4 @@
-import { RoverState } from "./rover-state";
+import { parseState, RoverState } from "./rover-state";
 import { Direction } from "./direction";
 import {
   type Action,
@@ -16,13 +16,8 @@ export class Rover {
 
   private readonly state: RoverState = new RoverState();
 
-  constructor(position: string = "") {
-    const [x, y, direction] = position.split(" ");
-    if (x !== undefined && y !== undefined && direction !== undefined) {
-      this.state.position.x = parseInt(x, 10);
-      this.state.position.y = parseInt(y, 10);
-      this.state.direction = direction[0]! as Direction;
-    }
+  constructor(position: PositionString) {
+    this.state = parseState(position);
   }
 
   public go(commands: string): void {
@@ -46,3 +41,5 @@ export class Rover {
     return this.XYD;
   }
 }
+
+export type PositionString = `${number} ${number} ${Direction}`;

@@ -1,5 +1,6 @@
 import { RoverState } from "./rover-state";
-import { Direction, Directions } from "./direction";
+import { Direction } from "./direction";
+import { rotate } from "./rotate";
 
 export interface Action {
   execute(currentState: RoverState): void;
@@ -34,10 +35,4 @@ export class TurnRightAction implements Action {
   execute(currentState: RoverState): void {
     currentState.direction = rotate(currentState.direction, 1);
   }
-}
-
-function rotate(direction: Direction, amount: number): Direction {
-  const index = Directions.indexOf(direction);
-
-  return Directions.at((index + amount) % Directions.length)!;
 }
