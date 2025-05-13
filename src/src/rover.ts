@@ -14,7 +14,7 @@ export class Rover {
     M: new MoveForwardAction(),
   };
 
-  private state: RoverState = new RoverState();
+  private readonly state: RoverState = new RoverState();
 
   constructor(position: string = "") {
     const [x, y, direction] = position.split(" ");

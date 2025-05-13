@@ -2,12 +2,12 @@
 
 ## To do
 
-- get rid of primitive obsession
 
 ## In progress
 
 ## Done
 
+- get rid of primitive obsession
 - simplify actions
 - create actions using factory
 - extract logic into action class
