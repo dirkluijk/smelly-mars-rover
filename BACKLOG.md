@@ -2,10 +2,11 @@
 
 ## To do
 
-- extract logic into command class
 - create commands using factory
 
 ## In progress
+
+- extract logic into command class
 
 ## Done
 

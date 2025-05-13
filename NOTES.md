@@ -10,4 +10,3 @@
 - introduce switch cases
 
 ## Pomodoro 2
-
