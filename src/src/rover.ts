@@ -5,9 +5,9 @@ export class Rover {
   constructor(position: string = "") {
     const s = position.split(" ");
     if (s.length >= 3) {
-      this.rs.xx = parseInt(s[0]!, 10);
-      this.rs.yy = parseInt(s[1]!, 10);
-      this.rs.dd = s[2]![0]! as Direction;
+      this.state.x = parseInt(s[0]!, 10);
+      this.state.y = parseInt(s[1]!, 10);
+      this.state.direction = s[2]![0]! as Direction;
     }
   }
 
@@ -15,37 +15,37 @@ export class Rover {
     for (let i = 0; i < cms.length; i++) {
       const c = cms[i];
       if (c === "L") {
-        if (this.rs.dd === Direction.EAST) {
-          this.rs.dd = Direction.NORTH;
-        } else if (this.rs.dd === Direction.NORTH) {
-          this.rs.dd = Direction.WEST;
-        } else if (this.rs.dd === Direction.WEST) {
-          this.rs.dd = Direction.SOUTH;
-        } else if (this.rs.dd === Direction.SOUTH) {
-          this.rs.dd = Direction.EAST;
+        if (this.state.direction === Direction.EAST) {
+          this.state.direction = Direction.NORTH;
+        } else if (this.state.direction === Direction.NORTH) {
+          this.state.direction = Direction.WEST;
+        } else if (this.state.direction === Direction.WEST) {
+          this.state.direction = Direction.SOUTH;
+        } else if (this.state.direction === Direction.SOUTH) {
+          this.state.direction = Direction.EAST;
         }
       } else if (c === "R") {
-        if (this.rs.dd === Direction.EAST) {
-          this.rs.dd = Direction.SOUTH;
-        } else if (this.rs.dd === Direction.SOUTH) {
-          this.rs.dd = Direction.WEST;
-        } else if (this.rs.dd === Direction.WEST) {
-          this.rs.dd = Direction.NORTH;
-        } else if (this.rs.dd === Direction.NORTH) {
-          this.rs.dd = Direction.EAST;
+        if (this.state.direction === Direction.EAST) {
+          this.state.direction = Direction.SOUTH;
+        } else if (this.state.direction === Direction.SOUTH) {
+          this.state.direction = Direction.WEST;
+        } else if (this.state.direction === Direction.WEST) {
+          this.state.direction = Direction.NORTH;
+        } else if (this.state.direction === Direction.NORTH) {
+          this.state.direction = Direction.EAST;
         }
       } else if (c === "M") {
-        if (this.rs.dd === Direction.EAST) {
-          this.rs.xx++;
+        if (this.state.direction === Direction.EAST) {
+          this.state.x++;
         }
-        if (this.rs.dd === Direction.SOUTH) {
-          this.rs.yy--;
+        if (this.state.direction === Direction.SOUTH) {
+          this.state.y--;
         }
-        if (this.rs.dd === Direction.WEST) {
-          this.rs.xx--;
+        if (this.state.direction === Direction.WEST) {
+          this.state.x--;
         }
-        if (this.rs.dd === Direction.NORTH) {
-          this.rs.yy++;
+        if (this.state.direction === Direction.NORTH) {
+          this.state.y++;
         }
       }
     }
@@ -56,12 +56,12 @@ export class Rover {
   }
 
   public get XYD(): string {
-    return `${this.rs.xx} ${this.rs.yy} ${this.rs.dd}`;
+    return `${this.state.x} ${this.state.y} ${this.state.direction}`;
   }
 
   public pos(): string {
     return this.XYD;
   }
 
-  private rs: RoverState = new RoverState();
+  private state: RoverState = new RoverState();
 }
