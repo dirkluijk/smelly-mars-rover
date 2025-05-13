@@ -10,3 +10,5 @@
 - introduce switch cases
 
 ## Pomodoro 2
+
+- extract logic into command class

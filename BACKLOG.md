@@ -2,14 +2,13 @@
 
 ## To do
 
-- create commands using factory
-
 ## In progress
 
-- extract logic into command class
+- create commands using factory
 
 ## Done
 
+- extract logic into command class
 - introduce switch cases
 - scan code and improve naming
 - introduce Direction enum
