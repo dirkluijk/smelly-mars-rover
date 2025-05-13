@@ -59,14 +59,19 @@ export class Rover {
   }
 
   private turnLeft() {
-    if (this.state.direction === Direction.EAST) {
-      this.state.direction = Direction.NORTH;
-    } else if (this.state.direction === Direction.NORTH) {
-      this.state.direction = Direction.WEST;
-    } else if (this.state.direction === Direction.WEST) {
-      this.state.direction = Direction.SOUTH;
-    } else if (this.state.direction === Direction.SOUTH) {
-      this.state.direction = Direction.EAST;
+    switch (this.state.direction) {
+      case Direction.EAST:
+        this.state.direction = Direction.NORTH;
+        break;
+      case Direction.NORTH:
+        this.state.direction = Direction.WEST;
+        break;
+      case Direction.WEST:
+        this.state.direction = Direction.SOUTH;
+        break;
+      case Direction.SOUTH:
+        this.state.direction = Direction.EAST;
+        break;
     }
   }
 
