@@ -1,4 +1,4 @@
-import { RoverState } from "./RoverState";
+import { RoverState } from "./rover-state";
 
 export class Rover {
   constructor(p: string = "") {

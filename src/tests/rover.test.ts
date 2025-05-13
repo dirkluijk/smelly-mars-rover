@@ -1,4 +1,4 @@
-import { Rover } from "../src/Rover";
+import { Rover } from "../src/rover";
 import { describe, expect, test } from "vitest";
 
 describe("MarsRoverShould", () => {

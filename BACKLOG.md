@@ -2,7 +2,6 @@
 
 ## To do
 
-- use correct file naming convention
 - introduce stricter types
 - scan code and improve naming
 
@@ -12,4 +11,5 @@ n/a
 
 ## Done
 
-n/a
+- use correct file naming convention
+
