@@ -14,6 +14,8 @@ export class Rover {
     M: new MoveForwardAction(),
   };
 
+  private state: RoverState = new RoverState();
+
   constructor(position: string = "") {
     const [x, y, direction] = position.split(" ");
     if (x !== undefined && y !== undefined && direction !== undefined) {
@@ -43,6 +45,4 @@ export class Rover {
   public pos(): string {
     return this.XYD;
   }
-
-  private state: RoverState = new RoverState();
 }

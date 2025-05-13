@@ -2,6 +2,8 @@
 
 ## To do
 
+- get rid of primitive obsession
+
 ## In progress
 
 ## Done

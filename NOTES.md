@@ -14,3 +14,5 @@
 - extract logic into action class
 - create actions using factory
 - simplify actions
+
+## Pomodoro 3
