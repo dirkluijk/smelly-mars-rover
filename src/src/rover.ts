@@ -1,20 +1,10 @@
 import { parseState, RoverState } from "./rover-state";
 import { Direction } from "./direction";
-import {
-  type Action,
-  MoveForwardAction,
-  TurnLeftAction,
-  TurnRightAction,
-} from "./action";
+import { ActionFactory } from "./action-factory";
 
 export class Rover {
-  private readonly actions: Record<string, Action> = {
-    L: new TurnLeftAction(),
-    R: new TurnRightAction(),
-    M: new MoveForwardAction(),
-  };
-
-  private readonly state: RoverState = new RoverState();
+  private readonly state = new RoverState();
+  private readonly actionFactory = new ActionFactory();
 
   constructor(position: PositionString) {
     this.state = parseState(position);
@@ -22,10 +12,7 @@ export class Rover {
 
   public go(commands: string): void {
     for (const command of commands) {
-      const action = this.actions[command];
-      if (action !== undefined) {
-        action.execute(this.state);
-      }
+      this.actionFactory.createAction(command).execute(this.state);
     }
   }
 
