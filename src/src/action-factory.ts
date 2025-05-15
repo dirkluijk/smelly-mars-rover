@@ -13,12 +13,10 @@ export class ActionFactory {
   };
 
   public createAction(command: string): Action {
-    const action = this.actions[command];
-
-    if (action === undefined) {
-      throw new Error("Unknown command");
-    }
-
-    return action;
+    return this.actions[command] ?? throwError(`Unknown command ${command}`);
   }
+}
+
+function throwError(message: string): never {
+  throw new Error(message);
 }
