@@ -11,9 +11,9 @@ export class Rover {
   }
 
   public go(commands: string): void {
-    for (const command of commands) {
-      this.actionFactory.createAction(command).execute(this.state);
-    }
+    Array.of(...commands)
+      .map((it) => this.actionFactory.createAction(it))
+      .forEach((it) => it.execute(this.state));
   }
 
   public G(z: string): void {
