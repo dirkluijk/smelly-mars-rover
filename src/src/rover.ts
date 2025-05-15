@@ -20,11 +20,11 @@ export class Rover {
     this.go(z[0]!);
   }
 
-  public get XYD(): string {
+  public get XYD(): PositionString {
     return `${this.state.position.x} ${this.state.position.y} ${this.state.direction}`;
   }
 
-  public pos(): string {
+  public pos(): PositionString {
     return this.XYD;
   }
 }
